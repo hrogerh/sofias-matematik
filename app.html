@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="sv">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+  <title>Sofias matematik</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body class="app-page">
+
+  <header class="app-header">
+    <span class="app-header-title">Sofias matematik</span>
+    <button class="btn-logout" onclick="logout()">Logga ut</button>
+  </header>
+
+  <main class="app-main">
+    <p class="app-greeting" id="greeting"></p>
+
+    <div class="module-grid">
+
+      <a class="module-card active" href="lektioner/algebra/index.html">
+        <div class="module-icon">📐</div>
+        <div class="module-info">
+          <div class="module-name">Algebra</div>
+          <div class="module-desc">Uttryck, ekvationer, faktorisering</div>
+        </div>
+        <div class="module-arrow">→</div>
+      </a>
+
+      <div class="module-card disabled">
+        <div class="module-icon">📈</div>
+        <div class="module-info">
+          <div class="module-name">Samband och förändring</div>
+          <div class="module-desc">Funktioner, grafer, proportionalitet</div>
+        </div>
+      </div>
+
+      <div class="module-card disabled">
+        <div class="module-icon">📏</div>
+        <div class="module-info">
+          <div class="module-name">Geometri</div>
+          <div class="module-desc">Area, volym, likformighet</div>
+        </div>
+      </div>
+
+      <div class="module-card disabled">
+        <div class="module-icon">🎲</div>
+        <div class="module-info">
+          <div class="module-name">Sannolikhet och statistik</div>
+          <div class="module-desc">Diagram, medelvärde, sannolikhet</div>
+        </div>
+      </div>
+
+    </div>
+  </main>
+
+  <script src="js/auth.js"></script>
+  <script>
+    requireAuth();
+    const greetings = [
+      'Hej Sofia! Vad vill du jobba med idag?',
+      'Välkommen tillbaka, Sofia!',
+      'Kul att du är här, Sofia!'
+    ];
+    document.getElementById('greeting').textContent =
+      greetings[Math.floor(Math.random() * greetings.length)];
+  </script>
+</body>
+</html>

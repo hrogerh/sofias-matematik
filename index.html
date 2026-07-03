@@ -2,9 +2,55 @@
 <html lang="sv">
 <head>
   <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
   <title>Sofias matematik</title>
+  <link rel="stylesheet" href="css/style.css">
 </head>
-<body>
-  <p>Kommer snart.</p>
+<body class="login-page">
+
+  <div class="login-wrap">
+    <div class="login-logo">🔢</div>
+    <h1 class="login-title">Sofias matematik</h1>
+
+    <div class="login-card">
+      <label class="field-label" for="password">Lösenord</label>
+      <input
+        class="field-input"
+        id="password"
+        type="password"
+        inputmode="text"
+        autocomplete="current-password"
+        placeholder="Skriv ditt lösenord"
+      >
+      <div class="login-error" id="loginError"></div>
+      <button class="btn-primary" id="loginBtn" onclick="doLogin()">Logga in</button>
+    </div>
+  </div>
+
+  <script src="js/auth.js"></script>
+  <script>
+    document.getElementById('password').addEventListener('keydown', function(e) {
+      if (e.key === 'Enter') doLogin();
+    });
+
+    async function doLogin() {
+      const pw = document.getElementById('password').value;
+      const err = document.getElementById('loginError');
+      const btn = document.getElementById('loginBtn');
+      btn.disabled = true;
+      btn.textContent = '...';
+      const result = await checkPassword(pw);
+      if (result) {
+        sessionStorage.setItem('sofia_auth', result);
+        window.location.href = 'app.html';
+      } else {
+        err.textContent = 'Fel lösenord, försök igen.';
+        document.getElementById('password').value = '';
+        document.getElementById('password').focus();
+        btn.disabled = false;
+        btn.textContent = 'Logga in';
+      }
+    }
+  </script>
 </body>
 </html>
