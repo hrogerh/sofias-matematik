@@ -7,6 +7,8 @@ let _attempts = 0;
 let _isDrawing = false;
 let _lastX = 0;
 let _lastY = 0;
+let _tool = 'pen';
+let _history = [];
 
 function initLesson(steps, options) {
   _steps = steps;
@@ -41,6 +43,11 @@ function renderStep() {
 
 function renderTheory(s, container) {
   const exLines = s.example.split('\n').map(l => `<div>${l}</div>`).join('');
+  const isLast = _current === _steps.length - 1;
+  const next = _steps[_current + 1];
+  const btnLabel = isLast
+    ? (_options.doneText || 'Klar')
+    : next.type === 'theory' ? 'Nästa →' : 'Jag förstår – visa uppgifter';
 
   container.innerHTML = `
     <div class="theory-block">
@@ -48,7 +55,7 @@ function renderTheory(s, container) {
       <div class="theory-text">${s.text}</div>
       <div class="theory-example">${exLines}</div>
     </div>
-    <button class="btn-primary" onclick="nextStep()">Jag förstår – visa uppgifter</button>
+    <button class="btn-primary" onclick="nextStep()">${btnLabel}</button>
   `;
 }
 
@@ -62,7 +69,10 @@ function renderExercise(s, container) {
       <div class="draw-label">Rita dina uträkningar här</div>
       <canvas class="draw-canvas" id="drawCanvas" width="600" height="340"></canvas>
       <div class="draw-tools">
-        <button class="btn-ghost" style="width:auto; padding:4px 14px;" onclick="clearCanvas()">Rensa</button>
+        <button class="draw-tool-btn active" id="penBtn" onclick="setTool('pen')" title="Penna">✏️ Penna</button>
+        <button class="draw-tool-btn" id="eraserBtn" onclick="setTool('eraser')" title="Radergummi">🧽 Radergummi</button>
+        <button class="draw-tool-btn" id="undoBtn" onclick="undoCanvas()" title="Ångra">↩️ Ångra</button>
+        <button class="draw-tool-btn" id="clearBtn" onclick="clearCanvas()" title="Rensa allt">🗑️ Rensa</button>
       </div>
     </div>
 
@@ -100,8 +110,9 @@ function setupCanvas() {
   const ctx = canvas.getContext('2d');
   ctx.lineCap = 'round';
   ctx.lineJoin = 'round';
-  ctx.lineWidth = 3;
-  ctx.strokeStyle = '#2A2A28';
+
+  _tool = 'pen';
+  _history = [];
 
   const getPos = (e) => {
     const r = canvas.getBoundingClientRect();
@@ -114,9 +125,22 @@ function setupCanvas() {
     };
   };
 
+  const applyToolStyle = () => {
+    if (_tool === 'eraser') {
+      ctx.globalCompositeOperation = 'destination-out';
+      ctx.lineWidth = 22;
+    } else {
+      ctx.globalCompositeOperation = 'source-over';
+      ctx.strokeStyle = '#2A2A28';
+      ctx.lineWidth = 3;
+    }
+  };
+
   const start = (e) => {
     e.preventDefault();
     _isDrawing = true;
+    saveHistory(canvas);
+    applyToolStyle();
     const p = getPos(e);
     _lastX = p.x; _lastY = p.y;
   };
@@ -142,9 +166,33 @@ function setupCanvas() {
   canvas.addEventListener('mouseup',    end);
 }
 
+function saveHistory(canvas) {
+  const ctx = canvas.getContext('2d');
+  _history.push(ctx.getImageData(0, 0, canvas.width, canvas.height));
+  if (_history.length > 20) _history.shift();
+}
+
+function setTool(tool) {
+  _tool = tool;
+  const penBtn = document.getElementById('penBtn');
+  const eraserBtn = document.getElementById('eraserBtn');
+  if (penBtn) penBtn.classList.toggle('active', tool === 'pen');
+  if (eraserBtn) eraserBtn.classList.toggle('active', tool === 'eraser');
+}
+
+function undoCanvas() {
+  const c = document.getElementById('drawCanvas');
+  if (!c || !_history.length) return;
+  const ctx = c.getContext('2d');
+  const prev = _history.pop();
+  ctx.putImageData(prev, 0, 0);
+}
+
 function clearCanvas() {
   const c = document.getElementById('drawCanvas');
-  if (c) c.getContext('2d').clearRect(0, 0, c.width, c.height);
+  if (!c) return;
+  saveHistory(c);
+  c.getContext('2d').clearRect(0, 0, c.width, c.height);
 }
 
 function normalizeAnswer(str) {
@@ -210,11 +258,16 @@ function showDone() {
   const dots = document.getElementById('dots');
   dots.innerHTML = '';
 
+  const hasExercises = _steps.some(s => s.type === 'exercise');
+  const doneSub = hasExercises
+    ? 'Du har gått igenom alla uppgifter i det här avsnittet.'
+    : 'Du har gått igenom hela genomgången.';
+
   content.innerHTML = `
     <div class="done-wrap">
       <div class="done-icon">⭐</div>
       <div class="done-title">Bra jobbat!</div>
-      <div class="done-sub">Du har gått igenom alla uppgifter i det här avsnittet.</div>
+      <div class="done-sub">${doneSub}</div>
       <button class="btn-primary" style="max-width:280px" onclick="window.location.href='${_options.doneUrl}'">
         ${_options.doneText || 'Tillbaka'}
       </button>

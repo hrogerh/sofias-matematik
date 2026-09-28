@@ -233,7 +233,28 @@ canvas.draw-canvas {
   cursor: crosshair;
 }
 
-.draw-tools { display: flex; gap: 8px; margin-top: 8px; }
+.draw-tools { display: flex; gap: 8px; margin-top: 8px; flex-wrap: wrap; }
+
+.draw-tool-btn {
+  flex: 1;
+  min-width: 0;
+  padding: 8px 6px;
+  font-size: 13px;
+  color: var(--soft);
+  background: var(--card);
+  border: 1.5px solid var(--canvas-border);
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  white-space: nowrap;
+  -webkit-tap-highlight-color: transparent;
+  transition: background 0.15s, border-color 0.15s, color 0.15s;
+}
+.draw-tool-btn:active { opacity: 0.8; }
+.draw-tool-btn.active {
+  background: var(--accent-light);
+  border-color: var(--accent-border);
+  color: var(--accent);
+}
 
 /* ── SVARSFÄLT ── */
 .answer-input {
