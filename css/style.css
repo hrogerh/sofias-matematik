@@ -147,6 +147,26 @@ body {
 .module-desc { font-size: 12px; color: var(--hint); margin-top: 2px; }
 .module-arrow { font-size: 18px; color: var(--accent); }
 
+.group-label {
+  font-size: 11px;
+  font-weight: 600;
+  color: var(--hint);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  margin: 1.25rem 0 0.5rem;
+}
+.group-label:first-child { margin-top: 0; }
+
+.done-dot {
+  display: inline-block;
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--accent);
+  margin-left: 6px;
+  vertical-align: middle;
+}
+
 /* ── LEKTION ── */
 .lesson-header {
   background: var(--card);

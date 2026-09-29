@@ -225,6 +225,7 @@ function checkAnswer() {
     document.getElementById('nextBtn').style.display = 'block';
     document.getElementById('hintBtn').style.display = 'none';
     if (window.MathJax) MathJax.typesetPromise([fb]);
+    reportProgress(true);
   } else {
     input.className = 'answer-input retry';
     fb.className = 'feedback retry';
@@ -233,6 +234,15 @@ function checkAnswer() {
     setTimeout(() => input.focus(), 100);
     if (window.MathJax) MathJax.typesetPromise([fb]);
   }
+}
+
+function reportProgress(correct) {
+  if (!_options.section) return;
+  fetch('/api/progress', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ section: _options.section, step: _current, correct, attempts: _attempts })
+  }).catch(() => {});
 }
 
 function showHint() {

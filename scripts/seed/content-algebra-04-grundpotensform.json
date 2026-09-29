@@ -1,0 +1,62 @@
+{
+  "title": "Grundpotensform",
+  "doneSection": "05-tal6-grundpotensform",
+  "doneText": "Fortsätt till övningar →",
+  "steps": [
+    {
+      "type": "theory",
+      "text": "Tal i <strong>grundpotensform</strong> skrivs som ett tal mellan 1 och 10, multiplicerat med en tiopotens, t.ex. \\( 8 \\cdot 10^8 \\). Man får kasta om ordningen på faktorerna i en multiplikation utan att produkten ändras. Det gör att vi kan sortera talen framför för sig och tiopotenserna för sig när vi <strong>multiplicerar</strong> – sedan multiplicerar vi talen och lägger ihop exponenterna.",
+      "example": "Utan potenser:\n\\( 4 \\cdot 10^3 \\cdot 2 \\cdot 10^5 = 4\\,000 \\cdot 200\\,000 = 800\\,000\\,000 = 8 \\cdot 10^8 \\)\n\nMed potenser:\n\\( 4 \\cdot 10^3 \\cdot 2 \\cdot 10^5 = 4 \\cdot 2 \\cdot 10^{3+5} = 8 \\cdot 10^8 \\)"
+    },
+    {
+      "type": "theory",
+      "text": "När man <strong>dividerar</strong> tal i grundpotensform dividerar man talen framför för sig och <strong>drar ifrån</strong> exponenterna (täljarens exponent minus nämnarens).",
+      "example": "Utan potenser:\n\\( \\dfrac{6 \\cdot 10^5}{3 \\cdot 10^2} = \\dfrac{600\\,000}{300} = 2\\,000 = 2 \\cdot 10^3 \\)\n\nMed potenser:\n\\( \\dfrac{6 \\cdot 10^5}{3 \\cdot 10^2} = \\dfrac{6}{3} \\cdot 10^{5-2} = 2 \\cdot 10^3 \\)"
+    },
+    {
+      "type": "theory",
+      "text": "Svaret måste alltid skrivas om så att talet framför tiopotensen är mellan 1 och 10. Är talet framför för stort, t.ex. \\( 15 \\cdot 10^6 \\), skriver du om det som \"något gånger 10\" och slår ihop det med tiopotensen. Är talet framför istället mindre än 1 gör du tvärtom: ta en tia från tiopotensen.",
+      "example": "\\( 15 \\cdot 10^6 \\): eftersom \\( 15 = 1{,}5 \\cdot 10 \\) blir det\n\\( 1{,}5 \\cdot 10 \\cdot 10^6 = 1{,}5 \\cdot 10^{1+6} = 1{,}5 \\cdot 10^7 \\)\n\n\\( 0{,}4 \\cdot 10^3 \\): skriv om \\( 10^3 \\) som \\( 10 \\cdot 10^2 \\), så blir det\n\\( 0{,}4 \\cdot 10 \\cdot 10^2 = 4 \\cdot 10^2 \\)"
+    },
+    {
+      "type": "theory",
+      "text": "Genomgång 1: multiplikation.",
+      "example": "Utan potenser:\n\\( 4{,}5 \\cdot 10^5 \\cdot 2 \\cdot 10^4 = 450\\,000 \\cdot 20\\,000 = 9\\,000\\,000\\,000 = 9 \\cdot 10^9 \\)\n\nMed potenser:\n\\( 4{,}5 \\cdot 2 \\cdot 10^{5+4} = 9 \\cdot 10^9 \\)"
+    },
+    {
+      "type": "theory",
+      "text": "Genomgång 2: multiplikation där svaret måste skrivas om till grundpotensform.",
+      "example": "Utan potenser:\n\\( 5 \\cdot 10^4 \\cdot 3 \\cdot 10^2 = 50\\,000 \\cdot 300 = 15\\,000\\,000 \\)\n\nMed potenser:\n\\( 5 \\cdot 3 \\cdot 10^{4+2} = 15 \\cdot 10^6 \\)\n\n\\( 15 \\) är inte mellan 1 och 10. Eftersom \\( 15 = 1{,}5 \\cdot 10 \\):\n\\( 15 \\cdot 10^6 = 1{,}5 \\cdot 10 \\cdot 10^6 = 1{,}5 \\cdot 10^7 \\)"
+    },
+    {
+      "type": "theory",
+      "text": "Genomgång 3: division.",
+      "example": "Utan potenser:\n\\( \\dfrac{9 \\cdot 10^7}{3 \\cdot 10^2} = \\dfrac{90\\,000\\,000}{300} = 300\\,000 = 3 \\cdot 10^5 \\)\n\nMed potenser:\n\\( \\dfrac{9}{3} \\cdot 10^{7-2} = 3 \\cdot 10^5 \\)"
+    },
+    {
+      "type": "theory",
+      "text": "Genomgång 4: division där svaret måste skrivas om till grundpotensform.",
+      "example": "Utan potenser:\n\\( \\dfrac{2 \\cdot 10^5}{5 \\cdot 10^2} = \\dfrac{200\\,000}{500} = 400 = 4 \\cdot 10^2 \\)\n\nMed potenser:\n\\( \\dfrac{2}{5} \\cdot 10^{5-2} = 0{,}4 \\cdot 10^3 \\)\n\n\\( 0{,}4 \\) är mindre än 1. Skriv om \\( 10^3 \\) som \\( 10 \\cdot 10^2 \\):\n\\( 0{,}4 \\cdot 10 \\cdot 10^2 = 4 \\cdot 10^2 \\)"
+    },
+    {
+      "type": "theory",
+      "text": "Genomgång 5: täljaren är en ren tiopotens. Här är ett smart trick: skriv om \\( 10^7 \\) som \\( 10 \\cdot 10^6 \\) direkt, så slipper du dela 1 med 4.",
+      "example": "Utan potenser:\n\\( \\dfrac{10^7}{4 \\cdot 10^4} = \\dfrac{10\\,000\\,000}{40\\,000} = 250 = 2{,}5 \\cdot 10^2 \\)\n\nMed potenser:\n\\( \\dfrac{10 \\cdot 10^6}{4 \\cdot 10^4} = \\dfrac{10}{4} \\cdot 10^{6-4} = 2{,}5 \\cdot 10^2 \\)"
+    },
+    {
+      "type": "theory",
+      "text": "Genomgång 6: nu med en <strong>negativ exponent</strong>. Räknereglerna funkar precis likadant – man adderar exponenterna med sina tecken.",
+      "example": "Utan potenser:\n\\( 6 \\cdot 10^{-7} \\cdot 4 \\cdot 10^3 = 0{,}0000006 \\cdot 4\\,000 = 0{,}0024 = 2{,}4 \\cdot 10^{-3} \\)\n\nMed potenser:\n\\( 6 \\cdot 4 \\cdot 10^{-7+3} = 24 \\cdot 10^{-4} \\)\n\n\\( 24 \\) är inte mellan 1 och 10. Eftersom \\( 24 = 2{,}4 \\cdot 10 \\):\n\\( 24 \\cdot 10^{-4} = 2{,}4 \\cdot 10 \\cdot 10^{-4} = 2{,}4 \\cdot 10^{-3} \\)"
+    },
+    {
+      "type": "theory",
+      "text": "Genomgång 7: division med en negativ exponent i täljaren.",
+      "example": "Utan potenser:\n\\( \\dfrac{7{,}5 \\cdot 10^{-1}}{3 \\cdot 10^3} = \\dfrac{0{,}75}{3\\,000} = 0{,}00025 = 2{,}5 \\cdot 10^{-4} \\)\n\nMed potenser:\n\\( \\dfrac{7{,}5}{3} \\cdot 10^{-1-3} = 2{,}5 \\cdot 10^{-4} \\)"
+    },
+    {
+      "type": "theory",
+      "text": "Genomgång 8: division där <strong>båda</strong> exponenterna är negativa. Kom ihåg: minus och minus blir plus.",
+      "example": "Utan potenser:\n\\( \\dfrac{1{,}5 \\cdot 10^{-2}}{5 \\cdot 10^{-5}} = \\dfrac{0{,}015}{0{,}00005} = 300 = 3 \\cdot 10^2 \\)\n\nMed potenser:\n\\( \\dfrac{1{,}5}{5} \\cdot 10^{-2-(-5)} = 0{,}3 \\cdot 10^3 \\)\n\n\\( 0{,}3 \\) är mindre än 1. Skriv om \\( 10^3 \\) som \\( 10 \\cdot 10^2 \\):\n\\( 0{,}3 \\cdot 10 \\cdot 10^2 = 3 \\cdot 10^2 \\)"
+    }
+  ]
+}

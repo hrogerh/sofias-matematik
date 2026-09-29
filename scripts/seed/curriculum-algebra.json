@@ -1,0 +1,50 @@
+{
+  "title": "Algebra",
+  "groups": [
+    {
+      "label": "Uttryck och ekvationer",
+      "sections": [
+        {
+          "id": "01-uttryck",
+          "title": "Algebraiska uttryck",
+          "desc": "Variabler, termer och att beräkna värdet",
+          "icon": "✏️",
+          "status": "ready"
+        },
+        {
+          "id": "02-ekvationer",
+          "title": "Ekvationer",
+          "desc": "Lösa ekvationer med en obekant",
+          "icon": "⚖️",
+          "status": "ready"
+        },
+        {
+          "id": "03-ekvationer-bada-sidor",
+          "title": "Ekvationer med obekant (x) på båda sidor",
+          "desc": "Samla termer och lös ekvationen",
+          "icon": "🔀",
+          "status": "ready"
+        }
+      ]
+    },
+    {
+      "label": "Grundpotensform",
+      "sections": [
+        {
+          "id": "04-grundpotensform",
+          "title": "Grundpotensform",
+          "desc": "Genomgång: multiplicera och dividera tal i grundpotensform",
+          "icon": "🔟",
+          "status": "ready"
+        },
+        {
+          "id": "05-tal6-grundpotensform",
+          "title": "Tal 6 – Grundpotensform",
+          "desc": "Öva på multiplikation och division i grundpotensform",
+          "icon": "📝",
+          "status": "ready"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="sv">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+  <title>Sofias matematik</title>
+  <link rel="stylesheet" href="../css/style.css">
+  <script>
+    window.MathJax = {
+      tex: { inlineMath: [['\\(','\\)']], displayMath: [['\\[','\\]']] },
+      options: { skipHtmlTags: ['script','noscript','style','textarea'] }
+    };
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script>
+</head>
+<body>
+
+  <header class="lesson-header">
+    <button class="btn-back" id="backBtn">←</button>
+    <div class="lesson-title" id="lessonTitle">Laddar…</div>
+    <div class="step-dots" id="dots"></div>
+  </header>
+
+  <main class="lesson-content" id="content"></main>
+
+  <script src="../js/auth.js"></script>
+  <script src="../js/lesson.js"></script>
+  <script>
+    requireAuth();
+
+    const params = new URLSearchParams(window.location.search);
+    const subject = params.get('subject');
+    const section = params.get('section');
+    const listUrl = `index.html?subject=${encodeURIComponent(subject || '')}`;
+
+    document.getElementById('backBtn').onclick = () => { window.location.href = listUrl; };
+
+    if (!subject || !section) {
+      document.getElementById('content').innerHTML = '<p>Ingen lektion vald.</p>';
+    } else {
+      fetch(`/api/lesson?subject=${encodeURIComponent(subject)}&section=${encodeURIComponent(section)}`)
+        .then(r => {
+          if (!r.ok) throw new Error('not found');
+          return r.json();
+        })
+        .then(lesson => {
+          document.getElementById('lessonTitle').textContent = lesson.title || '';
+          const doneUrl = lesson.doneSection
+            ? `runner.html?subject=${encodeURIComponent(subject)}&section=${encodeURIComponent(lesson.doneSection)}`
+            : listUrl;
+
+          initLesson(lesson.steps, {
+            backUrl: listUrl,
+            doneUrl,
+            doneText: lesson.doneText || 'Klar',
+            section: `${subject}/${section}`
+          });
+        })
+        .catch(() => {
+          document.getElementById('content').innerHTML =
+            '<p>Kunde inte ladda lektionen. Försök igen om en liten stund.</p>';
+        });
+    }
+  </script>
+</body>
+</html>

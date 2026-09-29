@@ -1,0 +1,208 @@
+{
+  "_comment": "Referensfil: hela läromedlets kapitel-/delkapitelstruktur över tre böcker (åk 7–9). Visas aldrig direkt i appen — används som uppslagskälla när vi bygger ut curriculum:<subject>-manifesten i databasen, sammanslaget till en egen progression per ämne istället för bokens kapitelindelning.",
+  "curriculum": "Matematik X, Y, Z (Årskurs 7-9)",
+  "books": [
+    {
+      "id": "X",
+      "grade": 7,
+      "title": "Matematik X",
+      "chapters": [
+        {
+          "number": 1,
+          "title": "Taluppfattning och tals användning",
+          "sections": [
+            { "id": "1.1", "title": "Naturliga tal" },
+            { "id": "1.2", "title": "Numeriska uttryck" },
+            { "id": "1.3", "title": "Hela tal" },
+            { "id": "1.4", "title": "Rationella tal" },
+            { "id": "1.5", "title": "Räkna med bråk" },
+            { "id": "1.6", "title": "Multiplikation och division" },
+            { "id": "1.7", "title": "Division med stora och små tal" },
+            { "id": "1.8", "title": "Avrundning och överslagsräkning" }
+          ]
+        },
+        {
+          "number": 2,
+          "title": "Algebra",
+          "sections": [
+            { "id": "2.1", "title": "Algebraiska uttryck" },
+            { "id": "2.2", "title": "Mönster" },
+            { "id": "2.3", "title": "Förenkling av uttryck" },
+            { "id": "2.4", "title": "Ekvationer" },
+            { "id": "2.5", "title": "Problemlösning med ekvation" },
+            { "id": "2.6", "title": "Ekvationer med obekanta i båda leden" }
+          ]
+        },
+        {
+          "number": 3,
+          "title": "Geometri",
+          "sections": [
+            { "id": "3.1", "title": "Prefix och enheter" },
+            { "id": "3.2", "title": "Längd och skala" },
+            { "id": "3.3", "title": "Vinklar" },
+            { "id": "3.4", "title": "Vinkelsumma" },
+            { "id": "3.5", "title": "Omkrets" },
+            { "id": "3.6", "title": "Area" }
+          ]
+        },
+        {
+          "number": 4,
+          "title": "Samband och förändring",
+          "sections": [
+            { "id": "4.1", "title": "Proportionalitet" },
+            { "id": "4.2", "title": "Tid och rörelse" },
+            { "id": "4.3", "title": "Sträcka, tid och hastighet" },
+            { "id": "4.4", "title": "Andel i bråkform" },
+            { "id": "4.5", "title": "Andel i procentform (I)" },
+            { "id": "4.6", "title": "Andel i procentform (II)" },
+            { "id": "4.7", "title": "Hur stor är delen?" }
+          ]
+        },
+        {
+          "number": 5,
+          "title": "Sannolikhet och statistik",
+          "sections": [
+            { "id": "5.1", "title": "Sannolikhet" },
+            { "id": "5.2", "title": "Tabeller och diagram" },
+            { "id": "5.3", "relativ_frekvens": true, "title": "Relativ frekvens" },
+            { "id": "5.4", "title": "Lägesmått" },
+            { "id": "5.5", "title": "Lägesmått från tabeller och diagram" },
+            { "id": "5.6", "title": "Cirkeldiagram" }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "Y",
+      "grade": 8,
+      "title": "Matematik Y",
+      "chapters": [
+        {
+          "number": 1,
+          "title": "Taluppfattning och tals användning",
+          "sections": [
+            { "id": "1.1", "title": "Räkna med bråk" },
+            { "id": "1.2", "title": "Addition och subtraktion av bråk" },
+            { "id": "1.3", "title": "Multiplikation av bråk" },
+            { "id": "1.4", "title": "Division av bråk" },
+            { "id": "1.5", "title": "Potenser" },
+            { "id": "1.6", "title": "Tiopotenser" }
+          ]
+        },
+        {
+          "number": 2,
+          "title": "Samband och förändring",
+          "sections": [
+            { "id": "2.1", "title": "Andelen" },
+            { "id": "2.2", "title": "Jämförelser och förändringar" },
+            { "id": "2.3", "title": "Det hela" },
+            { "id": "2.4", "title": "Delen" },
+            { "id": "2.5", "title": "Ränta" }
+          ]
+        },
+        {
+          "number": 3,
+          "title": "Geometri",
+          "sections": [
+            { "id": "3.1", "title": "Omkrets och area" },
+            { "id": "3.2", "title": "Cirkelns area" },
+            { "id": "3.3", "title": "Volym och begränsningsarea" },
+            { "id": "3.4", "title": "Enheter för volym" },
+            { "id": "3.5", "title": "Prisma och pyramid" },
+            { "id": "3.6", "title": "Cylinder, kon och klot" }
+          ]
+        },
+        {
+          "number": 4,
+          "title": "Algebra",
+          "sections": [
+            { "id": "4.1", "title": "Algebraiska uttryck" },
+            { "id": "4.2", "title": "Mönster" },
+            { "id": "4.3", "title": "Uttryck med parenteser" },
+            { "id": "4.4", "title": "Multiplikation av parenteser" },
+            { "id": "4.5", "title": "Uttryck med potenser" },
+            { "id": "4.6", "title": "Ekvationer" },
+            { "id": "4.7", "title": "Ekvationer med parenteser" },
+            { "id": "4.8", "title": "Problemlösning med ekvationer" }
+          ]
+        },
+        {
+          "number": 5,
+          "title": "Sannolikhet och statistik",
+          "sections": [
+            { "id": "5.1", "title": "Hur stor är sannolikheten?" },
+            { "id": "5.2", "title": "Oberoende och beroende händelser" },
+            { "id": "5.3", "title": "Kombinatorik" },
+            { "id": "5.4", "title": "Tabeller och diagram" }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "Z",
+      "grade": 9,
+      "title": "Matematik Z",
+      "chapters": [
+        {
+          "number": 1,
+          "title": "Taluppfattning och tals användning",
+          "sections": [
+            { "id": "1.1", "title": "Tal och beräkningar" },
+            { "id": "1.2", "title": "Räkna med bråk" },
+            { "id": "1.3", "title": "Räkna med negativa tal" },
+            { "id": "1.4", "title": "Räkna med potenser" },
+            { "id": "1.5", "title": "Små tal och tiopotenser" },
+            { "id": "1.6", "title": "Räkna med tal i grundpotensform" },
+            { "id": "1.7", "title": "Kvadrater och kvadratrötter" }
+          ]
+        },
+        {
+          "number": 2,
+          "title": "Samband och förändring",
+          "sections": [
+            { "id": "2.1", "title": "Procent" },
+            { "id": "2.2", "title": "Förändringsfaktor" },
+            { "id": "2.3", "title": "Funktioner" },
+            { "id": "2.4", "title": "Linjära funktioner" },
+            { "id": "2.5", "title": "Tillämpning av linjära funktioner" }
+          ]
+        },
+        {
+          "number": 3,
+          "title": "Algebra",
+          "sections": [
+            { "id": "3.1", "title": "Uttryck och mönster" },
+            { "id": "3.2", "title": "Förenkling av uttryck" },
+            { "id": "3.3", "title": "Ekvationer" },
+            { "id": "3.4", "title": "Procent och ekvationer" },
+            { "id": "3.5", "title": "Proportion" },
+            { "id": "3.6", "title": "Ekvationssystem" }
+          ]
+        },
+        {
+          "number": 4,
+          "title": "Geometri",
+          "sections": [
+            { "id": "4.1", "title": "Spegling och symmetri" },
+            { "id": "4.2", "title": "Skala" },
+            { "id": "4.3", "title": "Ekvationer med flera nämnare" },
+            { "id": "4.4", "title": "Likformighet" },
+            { "id": "4.5", "title": "Pythagoras sats" }
+          ]
+        },
+        {
+          "number": 5,
+          "title": "XYZ – Med sikte på framtiden (Repetition & NP)",
+          "sections": [
+            { "id": "5.1", "title": "Taluppfattning och tals användning" },
+            { "id": "5.2", "title": "Algebra" },
+            { "id": "5.3", "title": "Geometri" },
+            { "id": "5.4", "title": "Samband och förändring" },
+            { "id": "5.5", "title": "Sannolikhet och statistik" },
+            { "id": "5.6", "title": "Problemlösning" }
+          ]
+        }
+      ]
+    }
+  ]
+}

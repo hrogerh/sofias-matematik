@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="sv">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+  <title>Sofias matematik</title>
+  <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+
+  <header class="lesson-header">
+    <button class="btn-back" onclick="window.location.href='../app.html'">←</button>
+    <div class="lesson-title" id="subjectTitle">Laddar…</div>
+  </header>
+
+  <main class="lesson-content">
+    <p style="font-size:14px; color:var(--soft); margin-bottom:1.25rem;">
+      Välj vilket delmoment som du vill jobba med.
+    </p>
+    <div id="groups"></div>
+  </main>
+
+  <script src="../js/auth.js"></script>
+  <script>
+    requireAuth();
+
+    const params = new URLSearchParams(window.location.search);
+    const subject = params.get('subject');
+
+    async function loadProgress() {
+      try {
+        const r = await fetch('/api/progress');
+        if (!r.ok) return {};
+        return await r.json();
+      } catch (e) {
+        return {};
+      }
+    }
+
+    fetch(`/api/curriculum?subject=${encodeURIComponent(subject || '')}`)
+      .then(r => r.json())
+      .then(async curriculum => {
+        document.getElementById('subjectTitle').textContent = curriculum.title || subject;
+
+        const progress = await loadProgress();
+        const wrap = document.getElementById('groups');
+        wrap.innerHTML = '';
+
+        (curriculum.groups || []).forEach(group => {
+          const label = document.createElement('div');
+          label.className = 'group-label';
+          label.textContent = group.label;
+          wrap.appendChild(label);
+
+          const grid = document.createElement('div');
+          grid.className = 'module-grid';
+
+          group.sections.forEach(s => {
+            const isReady = s.status === 'ready';
+            const el = document.createElement(isReady ? 'a' : 'div');
+            el.className = 'module-card' + (isReady ? ' active' : ' disabled');
+            if (isReady) {
+              el.href = `runner.html?subject=${encodeURIComponent(subject)}&section=${encodeURIComponent(s.id)}`;
+            }
+
+            const key = `${subject}/${s.id}`;
+            const started = progress[key] && Object.keys(progress[key]).length > 0;
+
+            el.innerHTML = `
+              <div class="module-icon">${s.icon || '📘'}</div>
+              <div class="module-info">
+                <div class="module-name">${s.title}${started ? ' <span class="done-dot"></span>' : ''}</div>
+                <div class="module-desc">${isReady ? (s.desc || '') : 'Kommer snart'}</div>
+              </div>
+              ${isReady ? '<div class="module-arrow">→</div>' : ''}
+            `;
+            grid.appendChild(el);
+          });
+
+          wrap.appendChild(grid);
+        });
+      })
+      .catch(() => {
+        document.getElementById('subjectTitle').textContent = 'Kunde inte ladda';
+      });
+  </script>
+</body>
+</html>

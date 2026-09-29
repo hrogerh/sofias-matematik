@@ -1,0 +1,49 @@
+{
+  "title": "x på båda sidor",
+  "doneSection": "04-grundpotensform",
+  "doneText": "Fortsätt till grundpotensform →",
+  "steps": [
+    {
+      "type": "theory",
+      "text": "Ibland finns \\( x \\) på båda sidor om likhetstecknet. Då samlar vi alla \\( x \\) på vänster sida och alla tal på höger sida.",
+      "example": "\\( 3x + 2 = x + 10 \\)\n\nFlytta \\( x \\): &nbsp;\\( 3x - x = 10 - 2 \\)\n\\( 2x = 8 \\)\n\\( x = 4 \\)"
+    },
+    {
+      "type": "exercise",
+      "q": "Lös: \\( 4x + 1 = 2x + 9 \\)",
+      "answer": "4",
+      "ok": "Rätt! \\( 2x = 8 \\) ger \\( x = 4 \\).",
+      "retry": "Flytta \\( 2x \\) till vänster och \\( 1 \\) till höger.",
+      "hint": "\\( 4x - 2x = 9 - 1 \\) → \\( 2x = 8 \\)"
+    },
+    {
+      "type": "exercise",
+      "q": "Lös: \\( 5x + 3 = 2x + 12 \\)",
+      "answer": "3",
+      "ok": "Perfekt! \\( 3x = 9 \\) ger \\( x = 3 \\).",
+      "retry": "Samla x-termerna på vänster sida.",
+      "hint": "\\( 5x - 2x = 12 - 3 \\) → \\( 3x = 9 \\)"
+    },
+    {
+      "type": "theory",
+      "text": "Ibland behöver man också hantera negativa tal. Kom ihåg: när du flyttar ett positivt tal byter det tecken till negativt.",
+      "example": "\\( 6x - 4 = 2x + 8 \\)\n\n\\( 6x - 2x = 8 + 4 \\)\n\\( 4x = 12 \\)\n\\( x = 3 \\)"
+    },
+    {
+      "type": "exercise",
+      "q": "Lös: \\( 6x - 4 = 2x + 8 \\)",
+      "answer": "3",
+      "ok": "Rätt! \\( 4x = 12 \\) ger \\( x = 3 \\).",
+      "retry": "Flytta \\( 2x \\) till vänster och \\( -4 \\) till höger.",
+      "hint": "\\( 6x - 2x = 8 + 4 \\) → \\( 4x = 12 \\)"
+    },
+    {
+      "type": "exercise",
+      "q": "Lös: \\( 7x - 3 = 4x + 9 \\)",
+      "answer": "4",
+      "ok": "Utmärkt! \\( 3x = 12 \\) ger \\( x = 4 \\).",
+      "retry": "Samla x-termerna och talen var för sig.",
+      "hint": "\\( 7x - 4x = 9 + 3 \\) → \\( 3x = 12 \\)"
+    }
+  ]
+}
