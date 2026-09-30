@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="sv">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+  <title>Framsteg – Sofias matematik</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <header class="lesson-header">
+    <button class="btn-back" onclick="window.location.href='app.html'">←</button>
+    <div class="lesson-title">Sofias framsteg</div>
+  </header>
+
+  <main class="lesson-content" id="content">
+    <p style="font-size:14px; color:var(--soft);">Laddar…</p>
+  </main>
+
+  <script src="js/auth.js"></script>
+  <script>
+    requireAuth();
+
+    // Fler ämnen läggs till här efterhand som de byggs ut.
+    const SUBJECTS = [{ id: 'algebra', title: 'Algebra' }];
+
+    function formatTs(ts) {
+      if (!ts) return 'Inte påbörjad';
+      const d = new Date(ts);
+      return 'Senast: ' + d.toLocaleDateString('sv-SE') + ' ' +
+        d.toLocaleTimeString('sv-SE', { hour: '2-digit', minute: '2-digit' });
+    }
+
+    async function loadSubject(subject, progress) {
+      const curriculum = await fetch(`/api/curriculum?subject=${subject.id}`).then(r => r.json()).catch(() => null);
+      if (!curriculum) return null;
+
+      const readySections = (curriculum.groups || [])
+        .flatMap(g => g.sections)
+        .filter(s => s.status === 'ready');
+
+      const cards = [];
+      for (const sec of readySections) {
+        const lesson = await fetch(`/api/lesson?subject=${subject.id}&section=${sec.id}`)
+          .then(r => r.json()).catch(() => null);
+        const exerciseSteps = lesson ? lesson.steps.filter(s => s.type === 'exercise').length : 0;
+
+        const key = `${subject.id}/${sec.id}`;
+        const entries = Object.values(progress[key] || {});
+        const doneCount = entries.filter(e => e.correct).length;
+        const lastTs = entries.map(e => e.ts).sort().pop();
+        const practiceExtra = entries.reduce((sum, e) => sum + Math.max((e.timesCorrect || 1) - 1, 0), 0);
+
+        const statusText = exerciseSteps === 0
+          ? 'Genomgång (inga övningar)'
+          : `${doneCount} av ${exerciseSteps} övningar klara`;
+
+        cards.push({ sec, statusText, lastText: formatTs(lastTs), practiceExtra });
+      }
+
+      return { subject, cards };
+    }
+
+    async function render() {
+      const progress = await fetch('/api/progress').then(r => r.json()).catch(() => ({}));
+      const results = await Promise.all(SUBJECTS.map(s => loadSubject(s, progress)));
+
+      const content = document.getElementById('content');
+      content.innerHTML = '';
+
+      results.filter(Boolean).forEach(({ subject, cards }) => {
+        const label = document.createElement('div');
+        label.className = 'group-label';
+        label.textContent = subject.title;
+        content.appendChild(label);
+
+        const grid = document.createElement('div');
+        grid.className = 'module-grid';
+
+        cards.forEach(({ sec, statusText, lastText, practiceExtra }) => {
+          const card = document.createElement('div');
+          card.className = 'module-card';
+          const practiceNote = practiceExtra > 0
+            ? ` · övat om ${practiceExtra} gång${practiceExtra > 1 ? 'er' : ''} till`
+            : '';
+          card.innerHTML = `
+            <div class="module-icon">${sec.icon || '📘'}</div>
+            <div class="module-info">
+              <div class="module-name">${sec.title}</div>
+              <div class="module-desc">${statusText} · ${lastText}${practiceNote}</div>
+            </div>
+          `;
+          grid.appendChild(card);
+        });
+
+        content.appendChild(grid);
+      });
+
+      if (!content.children.length) {
+        content.innerHTML = '<p style="color:var(--soft); font-size:14px;">Inget att visa än.</p>';
+      }
+    }
+
+    render().catch(() => {
+      document.getElementById('content').innerHTML =
+        '<p style="color:var(--soft); font-size:14px;">Kunde inte hämta framsteg just nu.</p>';
+    });
+  </script>
+</body>
+</html>

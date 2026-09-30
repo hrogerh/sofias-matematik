@@ -18,9 +18,11 @@ module.exports = async (req, res) => {
       }
       const data = (await redisGet(KEY)) || {};
       data[section] = data[section] || {};
+      const prevTimesCorrect = (data[section][step] && data[section][step].timesCorrect) || 0;
       data[section][step] = {
         correct: !!correct,
         attempts: attempts || 1,
+        timesCorrect: correct ? prevTimesCorrect + 1 : prevTimesCorrect,
         ts: new Date().toISOString()
       };
       await redisSet(KEY, data);
