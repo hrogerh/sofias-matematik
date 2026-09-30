@@ -50,6 +50,13 @@ async function redisSet(key, rawValue) {
   return r.json();
 }
 
+async function redisDel(key) {
+  const r = await fetch(`${BASE}/del/${encodeURIComponent(key)}`, {
+    headers: { Authorization: `Bearer ${TOKEN}` }
+  });
+  return r.json();
+}
+
 const [cmd, key, arg] = process.argv.slice(2);
 
 if (cmd === 'get' && key) {
@@ -68,9 +75,13 @@ if (cmd === 'get' && key) {
   JSON.parse(raw); // validera innan vi skriver något
   const result = await redisSet(key, raw);
   console.log(result);
+} else if (cmd === 'del' && key) {
+  const result = await redisDel(key);
+  console.log(result);
 } else {
   console.log('Använd:');
   console.log('  node scripts/db.mjs get <key>');
   console.log('  node scripts/db.mjs set <key> <json-fil>');
+  console.log('  node scripts/db.mjs del <key>');
   process.exit(1);
 }

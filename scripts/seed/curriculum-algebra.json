@@ -24,25 +24,20 @@
           "desc": "Samla termer och lös ekvationen",
           "icon": "🔀",
           "status": "ready"
-        }
-      ]
-    },
-    {
-      "label": "Grundpotensform",
-      "sections": [
-        {
-          "id": "04-grundpotensform",
-          "title": "Grundpotensform",
-          "desc": "Genomgång: multiplicera och dividera tal i grundpotensform",
-          "icon": "🔟",
-          "status": "ready"
         },
         {
-          "id": "05-tal6-grundpotensform",
-          "title": "Tal 6 – Grundpotensform",
-          "desc": "Öva på multiplikation och division i grundpotensform",
-          "icon": "📝",
-          "status": "ready"
+          "id": "06-ekvationer-parenteser",
+          "title": "Ekvationer med parenteser",
+          "desc": "Kommer snart",
+          "icon": "🔣",
+          "status": "coming-soon"
+        },
+        {
+          "id": "07-ekvationssystem",
+          "title": "Ekvationssystem",
+          "desc": "Kommer snart",
+          "icon": "🧮",
+          "status": "coming-soon"
         }
       ]
     }

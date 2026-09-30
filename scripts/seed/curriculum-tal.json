@@ -1,0 +1,24 @@
+{
+  "title": "Taluppfattning och tals användning",
+  "groups": [
+    {
+      "label": "Grundpotensform",
+      "sections": [
+        {
+          "id": "04-grundpotensform",
+          "title": "Grundpotensform",
+          "desc": "Genomgång: multiplicera och dividera tal i grundpotensform",
+          "icon": "🔟",
+          "status": "ready"
+        },
+        {
+          "id": "05-tal6-grundpotensform",
+          "title": "Tal 6 – Grundpotensform",
+          "desc": "Öva på multiplikation och division i grundpotensform",
+          "icon": "📝",
+          "status": "ready"
+        }
+      ]
+    }
+  ]
+}
