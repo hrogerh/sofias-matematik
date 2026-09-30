@@ -296,6 +296,30 @@ canvas.draw-canvas {
 .answer-input.correct { border-color: var(--accent); background: var(--accent-light); }
 .answer-input.retry   { border-color: #C89B3C; background: var(--warn-light); }
 
+/* ── FLERVALSSVAR ── */
+.choice-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+  margin-bottom: 0.75rem;
+}
+.choice-btn {
+  padding: 0.9rem 0.5rem;
+  font-size: 17px;
+  font-weight: 500;
+  font-family: 'Courier New', monospace;
+  background: var(--card);
+  border: 1.5px solid var(--canvas-border);
+  border-radius: var(--radius-sm);
+  color: var(--text);
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+  transition: border-color 0.15s, background 0.15s;
+}
+.choice-btn:disabled { cursor: default; }
+.choice-btn.correct { border-color: var(--accent); background: var(--accent-light); }
+.choice-btn.wrong    { border-color: #C89B3C; background: var(--warn-light); }
+
 /* ── FEEDBACK ── */
 .feedback {
   font-size: 14px;

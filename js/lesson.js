@@ -61,6 +61,23 @@ function renderTheory(s, container) {
 
 function renderExercise(s, container) {
   _attempts = 0;
+  const hasChoices = Array.isArray(s.choices) && s.choices.length > 0;
+
+  const answerBlock = hasChoices
+    ? `<div class="choice-grid" id="choiceGrid"></div>`
+    : `
+      <input
+        class="answer-input"
+        id="answerInput"
+        type="text"
+        inputmode="text"
+        placeholder="Svaret är…"
+        autocomplete="off"
+        autocorrect="off"
+        autocapitalize="off"
+        spellcheck="false"
+      >
+    `;
 
   container.innerHTML = `
     <div class="exercise-q" id="exerciseQ">${s.q}</div>
@@ -76,21 +93,11 @@ function renderExercise(s, container) {
       </div>
     </div>
 
-    <input
-      class="answer-input"
-      id="answerInput"
-      type="text"
-      inputmode="text"
-      placeholder="Svaret är…"
-      autocomplete="off"
-      autocorrect="off"
-      autocapitalize="off"
-      spellcheck="false"
-    >
+    ${answerBlock}
 
     <div class="feedback" id="feedback"></div>
 
-    <button class="btn-primary" id="checkBtn" onclick="checkAnswer()">Kontrollera</button>
+    ${hasChoices ? '' : '<button class="btn-primary" id="checkBtn" onclick="checkAnswer()">Kontrollera</button>'}
     <button class="btn-secondary" id="nextBtn" style="display:none" onclick="nextStep()">
       ${_current < _steps.length - 1 ? 'Nästa' : (_options.doneText || 'Klar')}
     </button>
@@ -99,9 +106,51 @@ function renderExercise(s, container) {
 
   setupCanvas();
 
-  document.getElementById('answerInput').addEventListener('keydown', e => {
-    if (e.key === 'Enter') checkAnswer();
+  if (hasChoices) {
+    renderChoices(s);
+  } else {
+    document.getElementById('answerInput').addEventListener('keydown', e => {
+      if (e.key === 'Enter') checkAnswer();
+    });
+  }
+}
+
+function shuffle(arr) {
+  const a = arr.slice();
+  for (let i = a.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [a[i], a[j]] = [a[j], a[i]];
+  }
+  return a;
+}
+
+function renderChoices(s) {
+  const grid = document.getElementById('choiceGrid');
+  grid.innerHTML = '';
+  shuffle(s.choices).forEach(choice => {
+    const btn = document.createElement('button');
+    btn.className = 'choice-btn';
+    btn.textContent = choice;
+    btn.onclick = () => selectChoice(choice, btn);
+    grid.appendChild(btn);
   });
+}
+
+function selectChoice(choice, btnEl) {
+  document.querySelectorAll('.choice-btn').forEach(b => { b.disabled = true; });
+  const isCorrect = evaluateAnswer(choice);
+
+  if (isCorrect) {
+    btnEl.classList.add('correct');
+  } else {
+    btnEl.classList.add('wrong');
+    setTimeout(() => {
+      document.querySelectorAll('.choice-btn').forEach(b => {
+        b.disabled = false;
+        b.classList.remove('wrong');
+      });
+    }, 900);
+  }
 }
 
 function setupCanvas() {
@@ -200,16 +249,28 @@ function normalizeAnswer(str) {
 }
 
 function checkAnswer() {
-  const s = _steps[_current];
   const input = document.getElementById('answerInput');
   const fb = document.getElementById('feedback');
-  const val = normalizeAnswer(input.value);
 
-  if (!val) {
+  if (!normalizeAnswer(input.value)) {
     fb.className = 'feedback retry';
     fb.textContent = 'Skriv ditt svar i rutan.';
     return;
   }
+
+  const isCorrect = evaluateAnswer(input.value);
+
+  input.className = 'answer-input ' + (isCorrect ? 'correct' : 'retry');
+  if (!isCorrect) {
+    input.value = '';
+    setTimeout(() => input.focus(), 100);
+  }
+}
+
+function evaluateAnswer(rawVal) {
+  const s = _steps[_current];
+  const fb = document.getElementById('feedback');
+  const val = normalizeAnswer(rawVal);
 
   _attempts++;
 
@@ -218,22 +279,21 @@ function checkAnswer() {
   const isCorrect = val === correct || alts.includes(val);
 
   if (isCorrect) {
-    input.className = 'answer-input correct';
     fb.className = 'feedback correct';
     fb.innerHTML = s.ok;
-    document.getElementById('checkBtn').style.display = 'none';
+    const checkBtn = document.getElementById('checkBtn');
+    if (checkBtn) checkBtn.style.display = 'none';
     document.getElementById('nextBtn').style.display = 'block';
     document.getElementById('hintBtn').style.display = 'none';
     if (window.MathJax) MathJax.typesetPromise([fb]);
     reportProgress(true);
   } else {
-    input.className = 'answer-input retry';
     fb.className = 'feedback retry';
     fb.innerHTML = _attempts >= 2 ? s.hint : s.retry;
-    input.value = '';
-    setTimeout(() => input.focus(), 100);
     if (window.MathJax) MathJax.typesetPromise([fb]);
   }
+
+  return isCorrect;
 }
 
 function reportProgress(correct) {
