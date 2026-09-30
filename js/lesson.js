@@ -102,6 +102,7 @@ function renderExercise(s, container) {
       ${_current < _steps.length - 1 ? 'Nästa' : (_options.doneText || 'Klar')}
     </button>
     <button class="btn-ghost" id="hintBtn" onclick="showHint()">Visa ledtråd</button>
+    <button class="btn-ghost" id="giveUpBtn" style="display:none" onclick="revealSolution()">Jag kommer inte vidare – visa lösningen</button>
   `;
 
   setupCanvas();
@@ -285,23 +286,33 @@ function evaluateAnswer(rawVal) {
     if (checkBtn) checkBtn.style.display = 'none';
     document.getElementById('nextBtn').style.display = 'block';
     document.getElementById('hintBtn').style.display = 'none';
+    document.getElementById('giveUpBtn').style.display = 'none';
     if (window.MathJax) MathJax.typesetPromise([fb]);
-    reportProgress(true);
+    reportProgress({ correct: true });
   } else {
     fb.className = 'feedback retry';
     fb.innerHTML = _attempts >= 2 ? s.hint : s.retry;
+    if (_attempts >= 2) {
+      document.getElementById('giveUpBtn').style.display = 'block';
+    }
     if (window.MathJax) MathJax.typesetPromise([fb]);
   }
 
   return isCorrect;
 }
 
-function reportProgress(correct) {
+function reportProgress({ correct, skipped }) {
   if (!_options.section) return;
   fetch('/api/progress', {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify({ section: _options.section, step: _current, correct, attempts: _attempts })
+    body: JSON.stringify({
+      section: _options.section,
+      step: _current,
+      correct: !!correct,
+      skipped: !!skipped,
+      attempts: _attempts
+    })
   }).catch(() => {});
 }
 
@@ -311,7 +322,28 @@ function showHint() {
   fb.className = 'feedback retry';
   fb.innerHTML = s.hint;
   document.getElementById('hintBtn').style.display = 'none';
+  document.getElementById('giveUpBtn').style.display = 'block';
   if (window.MathJax) MathJax.typesetPromise([fb]);
+}
+
+function revealSolution() {
+  const s = _steps[_current];
+  const fb = document.getElementById('feedback');
+  fb.className = 'feedback correct';
+  fb.innerHTML = 'Så här löser du den:<br><br>' + s.ok;
+
+  const input = document.getElementById('answerInput');
+  if (input) input.disabled = true;
+  document.querySelectorAll('.choice-btn').forEach(b => { b.disabled = true; });
+
+  const checkBtn = document.getElementById('checkBtn');
+  if (checkBtn) checkBtn.style.display = 'none';
+  document.getElementById('hintBtn').style.display = 'none';
+  document.getElementById('giveUpBtn').style.display = 'none';
+  document.getElementById('nextBtn').style.display = 'block';
+
+  if (window.MathJax) MathJax.typesetPromise([fb]);
+  reportProgress({ correct: false, skipped: true });
 }
 
 function nextStep() {

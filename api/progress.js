@@ -11,7 +11,7 @@ module.exports = async (req, res) => {
     }
 
     if (req.method === 'POST') {
-      const { section, step, correct, attempts } = req.body || {};
+      const { section, step, correct, skipped, attempts } = req.body || {};
       if (!section || step === undefined) {
         res.status(400).json({ error: 'missing section/step' });
         return;
@@ -21,6 +21,7 @@ module.exports = async (req, res) => {
       const prevTimesCorrect = (data[section][step] && data[section][step].timesCorrect) || 0;
       data[section][step] = {
         correct: !!correct,
+        skipped: !!skipped,
         attempts: attempts || 1,
         timesCorrect: correct ? prevTimesCorrect + 1 : prevTimesCorrect,
         ts: new Date().toISOString()

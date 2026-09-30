@@ -51,12 +51,16 @@
         const key = `${subject.id}/${sec.id}`;
         const entries = Object.values(progress[key] || {});
         const doneCount = entries.filter(e => e.correct).length;
+        const skippedCount = entries.filter(e => e.skipped).length;
         const lastTs = entries.map(e => e.ts).sort().pop();
         const practiceExtra = entries.reduce((sum, e) => sum + Math.max((e.timesCorrect || 1) - 1, 0), 0);
 
-        const statusText = exerciseSteps === 0
+        let statusText = exerciseSteps === 0
           ? 'Genomgång (inga övningar)'
           : `${doneCount} av ${exerciseSteps} övningar klara`;
+        if (skippedCount > 0) {
+          statusText += ` (${skippedCount} fick se lösningen)`;
+        }
 
         cards.push({ sec, statusText, lastText: formatTs(lastTs), practiceExtra });
       }
