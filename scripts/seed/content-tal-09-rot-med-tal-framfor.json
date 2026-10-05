@@ -1,0 +1,36 @@
+{
+  "title": "Rot med tal framför",
+  "doneSection": null,
+  "doneText": "Klart – tillbaka till Taluppfattning",
+  "steps": [
+    {
+      "type": "theory",
+      "text": "Parentesen betyder: hela uttrycket gånger sig självt. Byt plats på faktorerna så att likadana står bredvid varandra.",
+      "example": "\\( (3\\sqrt{2})^2 \\)\n\\( = 3\\sqrt{2} \\cdot 3\\sqrt{2} \\)\n\\( = (3 \\cdot 3) \\cdot (\\sqrt{2} \\cdot \\sqrt{2}) \\)\n\\( = 9 \\cdot 2 \\)\n\\( = 18 \\)\n\nHär är \\( \\sqrt{2} \\cdot \\sqrt{2} = 2 \\)."
+    },
+    {
+      "type": "exercise",
+      "q": "Vad är \\( (2\\sqrt{5})^2 \\)?",
+      "answer": "20",
+      "ok": "Rätt! \\( (2 \\cdot 2) \\cdot (\\sqrt{5} \\cdot \\sqrt{5}) = 4 \\cdot 5 = 20 \\).",
+      "retry": "Skriv ut: \\( 2\\sqrt{5} \\cdot 2\\sqrt{5} \\). Byt plats så att 2 och 2 står bredvid varandra.",
+      "hint": "\\( (2 \\cdot 2) \\cdot (\\sqrt{5} \\cdot \\sqrt{5}) = 4 \\cdot ? \\)"
+    },
+    {
+      "type": "exercise",
+      "q": "Vad är \\( (4\\sqrt{3})^2 \\)?",
+      "answer": "48",
+      "ok": "Rätt! \\( (4 \\cdot 4) \\cdot (\\sqrt{3} \\cdot \\sqrt{3}) = 16 \\cdot 3 = 48 \\).",
+      "retry": "Skriv ut: \\( 4\\sqrt{3} \\cdot 4\\sqrt{3} \\). Byt plats så att 4 och 4 står bredvid varandra.",
+      "hint": "\\( (4 \\cdot 4) \\cdot (\\sqrt{3} \\cdot \\sqrt{3}) = 16 \\cdot ? \\)"
+    },
+    {
+      "type": "exercise",
+      "q": "Vad är \\( (5\\sqrt{2})^2 \\)?",
+      "answer": "50",
+      "ok": "Rätt! \\( (5 \\cdot 5) \\cdot (\\sqrt{2} \\cdot \\sqrt{2}) = 25 \\cdot 2 = 50 \\).",
+      "retry": "Skriv ut: \\( 5\\sqrt{2} \\cdot 5\\sqrt{2} \\). Byt plats så att 5 och 5 står bredvid varandra.",
+      "hint": "\\( (5 \\cdot 5) \\cdot (\\sqrt{2} \\cdot \\sqrt{2}) = 25 \\cdot ? \\)"
+    }
+  ]
+}

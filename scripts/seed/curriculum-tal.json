@@ -29,6 +29,13 @@
           "desc": "Vad kvadratrot betyder och varför reglerna stämmer",
           "icon": "√",
           "status": "ready"
+        },
+        {
+          "id": "09-rot-med-tal-framfor",
+          "title": "Rot med tal framför",
+          "desc": "T.ex. (2√5)²",
+          "icon": "√",
+          "status": "ready"
         }
       ]
     }
