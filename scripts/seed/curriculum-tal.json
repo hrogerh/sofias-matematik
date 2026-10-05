@@ -19,6 +19,18 @@
           "status": "ready"
         }
       ]
+    },
+    {
+      "label": "Kvadrater och kvadratrötter",
+      "sections": [
+        {
+          "id": "08-kvadrat-och-kvadratrot",
+          "title": "Kvadrat och kvadratrot",
+          "desc": "Vad kvadratrot betyder och varför reglerna stämmer",
+          "icon": "√",
+          "status": "ready"
+        }
+      ]
     }
   ]
 }

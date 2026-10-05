@@ -1,0 +1,115 @@
+{
+  "title": "Kvadrat och kvadratrot",
+  "doneSection": null,
+  "doneText": "Klart – tillbaka till Taluppfattning",
+  "steps": [
+    {
+      "type": "theory",
+      "text": "Att <strong>kvadrera</strong> ett tal betyder att multiplicera det med sig självt. \\( 3^2 = 3 \\cdot 3 = 9 \\).",
+      "example": "\\( 2^2 = 2 \\cdot 2 = 4 \\)\n\\( 3^2 = 3 \\cdot 3 = 9 \\)\n\\( 4^2 = 4 \\cdot 4 = 16 \\)\n\\( 5^2 = 5 \\cdot 5 = 25 \\)\n\nEn kvadrat med sidan 3 har arean \\( 3 \\cdot 3 = 9 \\)."
+    },
+    {
+      "type": "exercise",
+      "q": "Vad är \\( 6^2 \\)?",
+      "answer": "36",
+      "ok": "Rätt! \\( 6 \\cdot 6 = 36 \\).",
+      "retry": "Multiplicera 6 med sig självt.",
+      "hint": "Räkna \\( 6 \\cdot 6 \\)."
+    },
+    {
+      "type": "theory",
+      "text": "<strong>Kvadratroten</strong> går åt andra hållet. \\( \\sqrt{a} \\) är det (positiva) tal som <strong>gånger sig själv blir \\( a \\)</strong>.",
+      "example": "\\( \\sqrt{16} = 4 \\) eftersom \\( 4 \\cdot 4 = 16 \\)\n\\( \\sqrt{49} = 7 \\) eftersom \\( 7 \\cdot 7 = 49 \\)\n\nDe vanligaste att kunna:\n\\( \\sqrt{16}=4 \\;\\; \\sqrt{25}=5 \\;\\; \\sqrt{36}=6 \\;\\; \\sqrt{49}=7 \\)\n\\( \\sqrt{64}=8 \\;\\; \\sqrt{81}=9 \\;\\; \\sqrt{100}=10 \\)"
+    },
+    {
+      "type": "exercise",
+      "q": "Vad är \\( \\sqrt{49} \\)?",
+      "answer": "7",
+      "ok": "Rätt! \\( 7 \\cdot 7 = 49 \\).",
+      "retry": "Vilket tal gånger sig själv blir 49?",
+      "hint": "Testa dig fram: \\( 6 \\cdot 6 = 36 \\), och \\( 7 \\cdot 7 = ? \\)"
+    },
+    {
+      "type": "exercise",
+      "q": "Vad är \\( \\sqrt{81} \\)?",
+      "answer": "9",
+      "ok": "Rätt! \\( 9 \\cdot 9 = 81 \\).",
+      "retry": "Vilket tal gånger sig själv blir 81?",
+      "hint": "Testa dig fram: \\( 8 \\cdot 8 = 64 \\), och \\( 9 \\cdot 9 = ? \\)"
+    },
+    {
+      "type": "theory",
+      "text": "Ibland finns inget heltal som gånger sig själv blir talet. Då tar du reda på vilka två heltal roten ligger mellan.",
+      "example": "\\( \\sqrt{12} \\):\n\\( 3 \\cdot 3 = 9 \\) är för litet\n\\( 4 \\cdot 4 = 16 \\) är för stort\n\nAlltså ligger \\( \\sqrt{12} \\) mellan 3 och 4."
+    },
+    {
+      "type": "exercise",
+      "q": "Mellan vilka två heltal ligger \\( \\sqrt{20} \\)?",
+      "choices": ["3 och 4", "4 och 5", "5 och 6", "6 och 7"],
+      "answer": "4 och 5",
+      "ok": "Rätt! \\( 4 \\cdot 4 = 16 \\) är för litet och \\( 5 \\cdot 5 = 25 \\) är för stort, så \\( \\sqrt{20} \\) ligger mellan 4 och 5.",
+      "retry": "Testa: vad blir \\( 4 \\cdot 4 \\) och \\( 5 \\cdot 5 \\)? Var ligger 20?",
+      "hint": "\\( 4 \\cdot 4 = 16 \\) och \\( 5 \\cdot 5 = 25 \\). Talet 20 ligger mellan 16 och 25."
+    },
+    {
+      "type": "theory",
+      "text": "Kvadratroten och <strong>upphöjt till 2</strong> ångrar varandra. \\( \\sqrt{7} \\) är talet som gånger sig själv blir 7, så om du multiplicerar det med sig självt får du 7.",
+      "example": "\\( (\\sqrt{9})^2 = 3^2 = 9 \\)\n\\( (\\sqrt{7})^2 = \\sqrt{7} \\cdot \\sqrt{7} = 7 \\)\n\nDu behöver inte veta vad \\( \\sqrt{7} \\) är med decimaler. Det räcker att veta vad den <strong>gör</strong>.\n\nEn kvadrat med sidan \\( \\sqrt{7} \\) har arean 7."
+    },
+    {
+      "type": "exercise",
+      "q": "Vad är \\( (\\sqrt{2})^2 \\)?",
+      "answer": "2",
+      "ok": "Rätt! \\( \\sqrt{2} \\cdot \\sqrt{2} = 2 \\), för \\( \\sqrt{2} \\) är talet som gånger sig själv blir 2.",
+      "retry": "\\( \\sqrt{2} \\) är talet som gånger sig själv blir 2.",
+      "hint": "\\( (\\sqrt{2})^2 = \\sqrt{2} \\cdot \\sqrt{2} \\), och \\( \\sqrt{2} \\) är talet som gånger sig själv blir …?"
+    },
+    {
+      "type": "exercise",
+      "q": "Vad är \\( (\\sqrt{13})^2 \\)?",
+      "answer": "13",
+      "ok": "Rätt! \\( \\sqrt{13} \\cdot \\sqrt{13} = 13 \\).",
+      "retry": "\\( \\sqrt{13} \\) är talet som gånger sig själv blir 13.",
+      "hint": "\\( (\\sqrt{13})^2 = \\sqrt{13} \\cdot \\sqrt{13} \\), och \\( \\sqrt{13} \\) är talet som gånger sig själv blir …?"
+    },
+    {
+      "type": "theory",
+      "text": "Två rötter som multipliceras kan slås ihop under ett rottecken: \\( \\sqrt{a} \\cdot \\sqrt{b} = \\sqrt{a \\cdot b} \\).",
+      "example": "\\( \\sqrt{9} \\cdot \\sqrt{4} = 3 \\cdot 2 = 6 \\)\n\\( \\sqrt{9 \\cdot 4} = \\sqrt{36} = 6 \\) – samma svar\n\n<strong>Varför?</strong> Multiplicera \\( 3 \\cdot 2 \\) med sig självt:\n\\( (3 \\cdot 2) \\cdot (3 \\cdot 2) = (3 \\cdot 3) \\cdot (2 \\cdot 2) = 9 \\cdot 4 \\)\nSå \\( 3 \\cdot 2 \\) är talet som gånger sig själv blir \\( 9 \\cdot 4 \\), alltså \\( \\sqrt{9 \\cdot 4} \\)."
+    },
+    {
+      "type": "exercise",
+      "q": "Vad är \\( \\sqrt{3} \\cdot \\sqrt{12} \\)?",
+      "answer": "6",
+      "ok": "Rätt! \\( \\sqrt{3 \\cdot 12} = \\sqrt{36} = 6 \\).",
+      "retry": "Slå ihop under ett rottecken: \\( \\sqrt{3 \\cdot 12} \\).",
+      "hint": "\\( 3 \\cdot 12 = 36 \\), och \\( \\sqrt{36} = ? \\)"
+    },
+    {
+      "type": "theory",
+      "text": "På samma sätt för division: \\( \\dfrac{\\sqrt{a}}{\\sqrt{b}} = \\sqrt{\\dfrac{a}{b}} \\).",
+      "example": "\\( \\dfrac{\\sqrt{100}}{\\sqrt{25}} = \\dfrac{10}{5} = 2 \\)\n\\( \\sqrt{\\dfrac{100}{25}} = \\sqrt{4} = 2 \\) – samma svar\n\n<strong>Varför?</strong> Multiplicera \\( \\dfrac{10}{5} \\) med sig självt:\n\\( \\dfrac{10}{5} \\cdot \\dfrac{10}{5} = \\dfrac{10 \\cdot 10}{5 \\cdot 5} = \\dfrac{100}{25} \\)\nSå \\( \\dfrac{10}{5} \\) är talet som gånger sig själv blir \\( \\dfrac{100}{25} \\), alltså \\( \\sqrt{\\dfrac{100}{25}} \\)."
+    },
+    {
+      "type": "exercise",
+      "q": "Vad är \\( \\dfrac{\\sqrt{72}}{\\sqrt{2}} \\)?",
+      "answer": "6",
+      "ok": "Rätt! \\( \\sqrt{\\dfrac{72}{2}} = \\sqrt{36} = 6 \\).",
+      "retry": "Slå ihop under ett rottecken: \\( \\sqrt{\\dfrac{72}{2}} \\).",
+      "hint": "\\( 72 \\div 2 = 36 \\), och \\( \\sqrt{36} = ? \\)"
+    },
+    {
+      "type": "theory",
+      "text": "Varning: plus och minus går <strong>inte</strong> att slå ihop under ett rottecken. Räkna varje rot för sig först.",
+      "example": "\\( \\sqrt{81} + \\sqrt{4} = 9 + 2 = 11 \\)\n\\( \\sqrt{81 + 4} = \\sqrt{85} \\neq 11 \\)\n\nDet är bara multiplikation och division som går att slå ihop."
+    },
+    {
+      "type": "exercise",
+      "q": "Vad är \\( \\sqrt{64} + \\sqrt{36} \\)?",
+      "answer": "14",
+      "ok": "Rätt! \\( 8 + 6 = 14 \\).",
+      "retry": "Räkna varje rot för sig först, lägg sedan ihop.",
+      "hint": "\\( \\sqrt{64} = 8 \\) och \\( \\sqrt{36} = 6 \\). Vad är \\( 8 + 6 \\)?"
+    }
+  ]
+}
